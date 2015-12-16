@@ -1,4 +1,4 @@
-int count=900;
+int count=500;
 PVector mouse;   //declare a P
 Raindrop []r= new Raindrop[count];      //declare a new Raindrop called r
 Catcher c;
@@ -14,7 +14,7 @@ void setup() {
   for (int i= 0; i<count; i++) {
     r[i] = new Raindrop(random(width), random(-height, 0));   //Initialize r. The parameters used are the initial x and y positions (constructor)
   }
-  c= new Catcher(100);
+  c= new Catcher(200);
 }
 
 void draw() {
@@ -23,7 +23,7 @@ void draw() {
   for (int i= 0; i<count; i++) {
     r[i].fall();         //make the raindrop fall. It should accelerate as if pulled towards the ground by earth's gravity
     r[i].display();      //display the raindrop
-    if (r[i].isInContactWith(mouse)) {      //check to see if the raindrop is in contact with the point represented by the PVector called mouse
+    if (r[i].isInContactWith(c)) {      //check to see if the raindrop is in contact with the point represented by the PVector called mouse
       r[i].reset();                         //if it is, reset the raindrop
     }
     if (r[i].loc.y > height + r[i].diam/2) {     //check to see if the raindrop goes below the bottom of the screen

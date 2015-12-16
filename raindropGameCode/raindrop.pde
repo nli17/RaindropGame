@@ -20,9 +20,9 @@ class Raindrop {
     loc.add(vel);
     vel.add(acc);
   }
-  boolean isInContactWith(PVector w) {
+  boolean isInContactWith(Catcher c) {
     boolean a;
-    if (loc.dist(w)<diam/2) {
+    if (loc.dist(c.loc) < diam/2+c.diam/2) {
       return a= true;
     } else {
       return a=false;
