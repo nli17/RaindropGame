@@ -1,14 +1,9 @@
-int count=50;
+int count=50; //number of raindrops
 PVector mouse;   //declare a P
-//Raindrop []r= new Raindrop[count];      //declare a new Raindrop called r
-ArrayList<Raindrop> raindrops=new ArrayList<Raindrop>();
+ArrayList<Raindrop> raindrops=new ArrayList<Raindrop>(); //arraylist
 Catcher c;
-int score;
-
-// On your own, create an array of Raindrop objects instead of just one
-// Use the array instead of the single object
-// You can start out by just using the single Raindrop as you test
-
+int score; //declare score
+float w; //declare water level
 
 void setup() {
   size(800, 600);
@@ -17,7 +12,8 @@ void setup() {
     raindrops.add(new Raindrop(random(width), random(-height, 0)));   //Initialize r. The parameters used are the initial x and y positions (constructor)
   }
   c= new Catcher(150);
-  score=0;
+  score=0; //initialize score
+  w=0;
 }
 
 void draw() {
@@ -29,14 +25,23 @@ void draw() {
     r.display();      //display the raindrop
     if (r.isInContactWith(c)) {      //check to see if the raindrop is in contact with the point represented by the PVector called mouse
       r.reset();                         //if it is, reset the raindrop
-      score=score+1;
+      score=score+1; //if the catcher is in contact with raindrops, add a point to the score
     }
     if (r.loc.y > height + r.diam/2) {     //check to see if the raindrop goes below the bottom of the screen
-      r.reset();                           //if it does, reset the raindrop
+      r.reset(); 
+      //if it does, reset the raindrop
+      w=w-5;
     }
   }
-  c.display();
-  c.update();
-  textSize(50);
-  text(score, 375,70);
+  c.display(); //display the catcher
+  c.update(); //update the catcher
+  fill(121, 161, 176);
+  rect(0, 600, width, w);
+  fill(145, 18, 20);
+  textSize(50); //text size of score
+  text(score, 375, 70); //location of score
+  if (w <= -600) {
+    background(121, 161, 176);
+    text("game over", 290, height/2);
+  }
 }
