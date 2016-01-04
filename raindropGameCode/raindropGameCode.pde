@@ -4,7 +4,7 @@ ArrayList<Raindrop> raindrops=new ArrayList<Raindrop>(); //arraylist
 Catcher c;
 int score; //declare score
 float w; //declare water level
-
+int start =0;
 void setup() {
   size(800, 600);
   mouse = new PVector(); //initialize mouse PVector. value is irrelevant since it will be set at the start of void draw(){}
@@ -17,6 +17,11 @@ void setup() {
 }
 
 void draw() {
+  if(mousePressed){
+    //background(185, 208, 222);
+    start+=1;
+  }
+  if(start ==1){
   mouse.set(mouseX, mouseY);             //set value of mouse as mouseX,mouseY
   background(185, 208, 222);
   for (int i= 0; i<count; i++) {
@@ -44,4 +49,5 @@ void draw() {
     background(121, 161, 176);
     text("game over", 290, height/2);
   }
+}
 }
